@@ -1,0 +1,150 @@
+Plan for 3.3:
+
+Add following to new 3rd level menu
+	-If there was nothing to read, what should I do?
+	-Spacing of READ to 3rd Menu
+1) Like
+2) Comment
+	
+3) Read_AZ
+4) Read_ZA
+5) Done
+
+Add following to 1st menu
+1) USERS
+2) SORTUSERS
+
+**
+READ -> 
+
+Change PostLL with feed and wall
+wall->create(); wall serves as postLL
+Everytime someone makes a post, 
+	1) Add to the wall of that user
+	2) Add that post to each user friend's feed 
+		for loop of friend vector:
+			Access their feed and then create post there
+ When Someone Reads
+	1) Read first post of login user's feed
+	2) If they like and comment -> make changes to the poster's WALL
+	3) At the end delete it from the feed
+
+	How can I access that specific poster's wall??
+
+MYFEED: 
+	1) Get the feedLL of logged in user and then prints them all
+
+MYWALL: 
+	1) Gets the wallLL of logged in user and then prints them all
+
+Each post has a commentLL
+
+Like: Increases the like count of the post (CHANGES MADE IN poster's WALL)
+
+Comment: Adds a comment to the CommentLL in the post (CHANGES MADE IN poster's WALL)
+	comment object contains first and last name and the comment text
+
+READ_AZ: Goes to the wall of where the read feed post was made
+		-For loop the commentLL of the post and print using next node
+
+READ_ZA: Goes to wall of where the read feed post was made
+		-For loop the commentLL use the prev node
+
+	*************************	
+1) Gotta change the likes of myFeed ... doesnt work
+2) Implement Comment a little more
+On the Third menu... Pass in first and last.
+3) When a user Types COmment <TEXT> 
+	Make a new CommentLL for that specific Post IN THE WALL 
+		Create a new comment in CommentLL like how you added FBLUSER in FBLUSERLL
+		1) Get first and last name of the commenter and put it into comment variables first and last
+		2) Set the text in the comment variable
+	When a user goes to MYWALL they should be able to see comments made by their friends
+
+
+
+
+******
+Fix displaying comments
+
+Questions:
+1) When should you be able to see the comments
+2) If i do feed, should I be able to see comments and likes
+3) If i do sortUser, does it sort everything from that point on without calling it again? NOPE
+
+
+
+
+
+
+
+
+
+
+------------------------------------------------------------------------
+1) Instantiate a new user Linked list in main
+2) Create -> I make a new FBLUser(THIS IS A NODE)
+3) Login -> Go through Linked list and check id values
+4) Quit easy
+5) Logout easy
+6) Post -> Create FBLPostLL (This is the head like the userLL) 
+	-Create FBLPost (This is a node to FBLPostLL)
+	-IN FBLUser -> create a field of FBLPostLL
+7) Read -> Display first FBLPost then removes it
+
+Note:
+-To make posts actually post dont make a copy
+	-Pass by reference
+
+**************
+Move 2nd menu to FBLUser.cpp
+In top menu in Login, have user.secondMenu();
+
+
+
+Questions:
+-Seg Fault
+	-CA3
+	-Head and tail are not doing what they need to do.
+-Best way to do POST + arguments
+- Deleting 
+
+
+1) Create FBLUser class
+
+2) FBLUser class should contain
+	- Userid, Password, First Name, Last
+	- FBLUser object should store multiple users so implement an FBLUser Linked List Class
+		-FBLUserLL
+		-Instanciate exactly once 
+		-Kinda like Donors -> DonorDatabase and you instantiated Database once in main
+	- FBLUser object should also contain a linked list of FBLPost Objects
+		-We will call this FBLPostLL
+
+3) Create FBLPost Linked list object
+	- Holds a linked list of instances of FBLPost C++ Class
+	- FBLPost can be liked or commented like fb
+	- Program counts the number of likes 
+		- Maintain an integer counter in each FBLPost object
+	- You do not have to check if a post is not liked more than once by a user
+4) NODES:
+	- You need to create 2 linked list Nodes C++ Classes
+		- For FBLUserLL & FBLPostLL classes
+
+--------------------------------------------------------------------------------------------
+	
+4) Create FBLComments Linked List FBLCommentLL
+	- Data member of the FBLPost class
+	
+
+5) Users can Friend one another. 
+	- Each FBLUser's friends are stored in Linked List of pointers to FBLUsers
+	- Type of data field of FBLFRIENDLL Node is a pointer to an FBLUser
+		-Create a Node FBLFriendLL that points to FBLUser
+
+
+Questions: 
+	1) ElementType ???
+	2) Name of executable file?
+	3) Can you include the node class in the actual linked class or should you make separate files
+
